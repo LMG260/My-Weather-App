@@ -1,20 +1,38 @@
 //day & time
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[today];
+function formatDate(now) {
+  let date = now.getDate();
+  if (date < 10) {
+    date = `0${date}`;
+  }
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let years = now.getFullYear();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let months = now.getMonth() + 1;
+  if (months < 10) {
+    months = `0${months}`;
+  }
+  return `${day} ${months}/${date}/${years} ${hours}:${minutes}`;
+}
 
-let today = document.querySelector("#date");
-today.innerHTML = `${
-  days[now.getDay()]
-}, ${now.getHours()}:${now.getMinutes()}`;
+let now = new Date();
+let dateTime = document.querySelector("#date");
+dateTime.innerHTML = formatDate(now);
 
 //search
 function searchCityName(event) {
