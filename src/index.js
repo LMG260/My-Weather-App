@@ -39,7 +39,6 @@ function searchCityName(event) {
   event.preventDefault();
   let city = document.querySelector("#city-name");
   let inputCity = document.querySelector("#search-city");
-  console.log(inputCity.value);
   city.innerHTML = inputCity.value;
 
   let searchCity = document.querySelector("#search-city");
@@ -47,13 +46,18 @@ function searchCityName(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchCity.value}&appid=${apiKey}&units=metric`;
 
   function showTemp(response) {
-    console.log(response.data);
     let cityName = response.data.name;
     let currentTemp = Math.round(response.data.main.temp);
     let cityElement = document.querySelector("#city-name");
-    cityElement.innerHTML = cityName;
     let tempElement = document.querySelector("#temperature");
+    let descriptionElement = document.querySelector("#description");
+    let humidityElement = document.querySelector("#humidity");
+    let windElement = document.querySelector("#wind-speed");
+    cityElement.innerHTML = cityName;
     tempElement.innerHTML = `${currentTemp}°C`;
+    descriptionElement.innerHTML = response.data.weather[0].description;
+    humidityElement.innerHTML = response.data.main.humidity;
+    windElement.innerHTML = Math.round(response.data.wind.speed);
   }
   axios.get(apiUrl).then(showTemp);
 }
@@ -63,10 +67,10 @@ form.addEventListener("submit", searchCityName);
 
 //Current Location Button
 function showLocation(position) {
-   let latitude = position.coords.latitude;
-   let longitude = position.coords.longitude;
-   let apiKey = "318b89d1d3da782c38977be3d7f1cedb";
-   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "318b89d1d3da782c38977be3d7f1cedb";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showTemp);
 }
