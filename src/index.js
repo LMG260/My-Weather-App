@@ -54,14 +54,19 @@ function searchCityName(event) {
     let humidityElement = document.querySelector("#humidity");
     let windElement = document.querySelector("#wind-speed");
     let iconElement = document.querySelector("#icon");
+
+    celsiusTemperature = Math.round(response.data.main.temp);
+
     cityElement.innerHTML = cityName;
     tempElement.innerHTML = `${currentTemp}°C`;
     descriptionElement.innerHTML = response.data.weather[0].description;
     humidityElement.innerHTML = response.data.main.humidity;
     windElement.innerHTML = Math.round(response.data.wind.speed);
-    iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    iconElement.setAttribute(
+      "src",
+      `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
     iconElement.setAttribute("alt", response.data.weather[0].description);
-    
   }
   axios.get(apiUrl).then(showTemp);
 }
@@ -84,25 +89,52 @@ function getCurrentPosition(event) {
   navigator.geolocation.getCurrentPosition(showLocation);
 }
 
+// Units F °C  Buttons
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let farenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(farenheitTemperature);
+}
+
+function displaycelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let button = document.querySelector("#button");
 button.addEventListener("click", getCurrentPosition);
 
-// Units F °C  Buttons
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
-let getFahrenheit = document.querySelector("#fahrenheit-link");
-let getCelsius = document.querySelector("#celsius-link");
-let temperature = document.querySelector(".temperature");
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displaycelsiusTemperature);
 
-getFahrenheit.addEventListener("click", function (event) {
-  event.preventDefault();
-  if (getFahrenheit.innerHTML === "°F") {
-    temperature.innerHTML = "50ºF ☀️";
-  }
-});
+searchCityName("Cardiff");
 
-getCelsius.addEventListener("click", function (event) {
-  event.preventDefault();
-  if (getCelsius.innerHTML === "°C") {
-    temperature.innerHTML = "10ºC ☀️";
-  }
-});
+//let getFahrenheit = document.querySelector("#fahrenheit-link");
+//let getCelsius = document.querySelector("#celsius-link");
+////let temperature = document.querySelector(".temperature");
+
+//getFahrenheit.addEventListener("click", function (event) {
+// event.preventDefault();
+//if (getFahrenheit.innerHTML === "°F") {
+//   temperature.innerHTML = "50ºF ☀️";
+// }
+//});
+
+//getCelsius.addEventListener("click", function (event) {
+// event.preventDefault();
+// if (getCelsius.innerHTML === "°C") {
+//   temperature.innerHTML = "10ºC ☀️";
+// }
+//});

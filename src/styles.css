@@ -39,3 +39,13 @@ h4 {
 .search:hover {
   cursor: pointer;
 }
+
+.currentTemp .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+.currentTemp .active:hover {
+  text-decoration: none;
+}
