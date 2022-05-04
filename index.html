@@ -26,80 +26,54 @@
 
         </div>
       </form>
+
       <br />
+
       <h1 class="city" id="city-name">Cardiff</h1>
-      <br />
       <span class="currentDate" id="date"></span>
       <br />
       <button id="button">
         Current Location
       </button>
       
-      
-
       <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="Sunny" class="cloudy" id="icon"/>
     
       <div class="currentTemp">
-      <span>
-      <h3 class="temperature" id="temperature">8°</h3>
-      </span>
-      <span class="units">
-        <a href="#" id="celsius-link" class="active">°C</a>
-        <a href="#" id="fahrenheit-link">°F</a>
-      </span>
+        <span>
+         <h3 class="temperature" id="temperature">8°</h3>
+        </span>
+        <span class="units">
+         <a href="#" id="celsius-link" class="active">°C</a>
+         <a href="#" id="fahrenheit-link">°F</a>
+        </span>
     </div>
 
       <br />
       
-      <div class="row">
-        <h4 class="col-4">Humidity: <span id="humidity"></span>%</h4>
-        <h4 class="col-4" id="description">Sunny</h4>
-        <h4 class="col-4" >Wind Speed: <span id="wind-speed"></span> km/h</h4>
+      <div class="weather-info">
+        <ul>
+          <li>Sunny<span id="description"></span></li>
+          <li>Humidity: <span id="humidity"></span>%</li>
+          <li>Wind Speed: <span id="wind-speed"></span> km/h</li>
+        </ul>
 
       <br />
-      <br />
-      <div class="row">
-        <div class="col-6">Day</div>
-        <div class="col-6">Temperature</div>
-        <ul class="row" id="tomorrow">
-            <li class="col-6">
-                Mon 28th Feb 
-                <i class="fa-solid fa-cloud-rain"></i>
-            </li>
-            <li class="col-6">
-                10°C/6°F               
-            </li>
-            <li class="col-6">
-                Tue 1st Mar 
-                <i class="fa-solid fa-cloud"></i>
-            </li>
-            <li class="col-6">
-                8°C/6°F               
-            </li>
-            <li class="col-6">
-                Wed 2nd Mar 
-                <i class="fa-solid fa-cloud-rain"></i>
-            </li>
-            <li class="col-6">
-                10°C/8°F               
-            </li>
-            <li class="col-6">
-                Thurs 3rd Mar 
-                <i class="fa-solid fa-cloud-rain"></i>
-            </li>
-            <li class="col-6">
-                10°C/5°F               
-            </li>
-            <li class="col-6">
-                Fri 4th Mar 
-                <i class="fa-solid fa-cloud-rain"></i>
-            </li>
-            <li class="col-6">
-                9°C/3°F               
-            </li>
-        </ul>
+
+      <div class="weather-forecast">
+        <div class="row">
+          <div class="col-2">        
+                Mon 
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" width="50"/>
+                <span class="weather-forecast-temperature-max">
+                10°               
+                </span>
+                <span class="weather-forecast-temperature-min">
+                6°               
+                </span>
+          </div>
+       </div>       
       </div>
-      <br />
+
       <footer>
         This project was coded by <a href="insta website" target="blank">Lauren Gonzales</a>
         and is <a href="https://github.com/LMG260/My-Weather-App" target="blank">open-sourced on GitHub</a>
